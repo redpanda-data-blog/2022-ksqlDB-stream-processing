@@ -50,3 +50,17 @@ services:
       - ksqldb-server
     entrypoint: /bin/sh
     tty: true 
+
+  mysql:
+    image: mysql:latest
+    hostname: mysql
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql-pw
+      MYSQL_DATABASE: call-center
+      MYSQL_USER: example-user
+      MYSQL_PASSWORD: example-pw
+    volumes:
+      - "./mysql/custom-config.cnf:/etc/mysql/conf.d/custom-config.cnf"
