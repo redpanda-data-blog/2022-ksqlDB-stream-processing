@@ -33,14 +33,16 @@ services:
     image: confluentinc/ksqldb-server:0.24.0
     hostname: ksqldb-server
     container_name: ksqldb-server
-    command: ["/etc/ksqldb-server/run.sh"]
     depends_on:
       - redpanda
     ports:
       - "8088:8088"
-    volumes:
-      - ./files/ksqldb-server:/etc/ksqldb-server      
-
+    environment:
+      KSQL_LISTENERS: "http://0.0.0.0:8088"
+      KSQL_BOOTSTRAP_SERVERS: "redpanda:29092"
+      KSQL_KSQL_SCHEMA_REGISTRY_URL: "http://schema-registry:8081"
+      KSQL_KSQL_LOGGING_PROCESSING_STREAM_AUTO_CREATE: "true"
+      KSQL_KSQL_LOGGING_PROCESSING_TOPIC_AUTO_CREATE: "true"    
 
   ksqldb-cli:
     image: confluentinc/ksqldb-cli:0.24.0
@@ -50,17 +52,6 @@ services:
       - ksqldb-server
     entrypoint: /bin/sh
     tty: true 
-
-  mysql:
-    image: mysql:latest
-    hostname: mysql
-    container_name: mysql
-    ports:
-      - "3306:3306"
-    environment:
-      MYSQL_ROOT_PASSWORD: mysql-pw
-      MYSQL_DATABASE: call-center
-      MYSQL_USER: example-user
-      MYSQL_PASSWORD: example-pw
     volumes:
-      - "./mysql/custom-config.cnf:/etc/mysql/conf.d/custom-config.cnf"
+    - ./files/sql:/etc/sql    
+
