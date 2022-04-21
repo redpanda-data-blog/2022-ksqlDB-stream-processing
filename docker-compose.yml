@@ -28,3 +28,25 @@ services:
     ports:
     - 9092:9092
     - 29092:29092
+
+  ksqldb-server:
+    image: confluentinc/ksqldb-server:0.24.0
+    hostname: ksqldb-server
+    container_name: ksqldb-server
+    command: ["/etc/ksqldb-server/run.sh"]
+    depends_on:
+      - redpanda
+    ports:
+      - "8088:8088"
+    volumes:
+      - ./files/ksqldb-server:/etc/ksqldb-server      
+
+
+  ksqldb-cli:
+    image: confluentinc/ksqldb-cli:0.24.0
+    container_name: ksqldb-cli
+    depends_on:
+      - redpanda
+      - ksqldb-server
+    entrypoint: /bin/sh
+    tty: true 
