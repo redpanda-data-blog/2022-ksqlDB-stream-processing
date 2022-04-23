@@ -40,6 +40,10 @@ Example;
 INSERT INTO calls (name, reason, duration_seconds) VALUES ('derek', 'refund', 325);
 ```
 
+7. Configure ksqlDB to read from start of stream
+```
+SET 'auto.offset.reset' = 'earliest';
+```
 
 7. Make Queries
 
