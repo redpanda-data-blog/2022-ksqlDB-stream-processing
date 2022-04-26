@@ -1,23 +1,23 @@
-CREATE STREAM calls (name VARCHAR, reason VARCHAR, duration_seconds INT)
+CREATE STREAM emergencies (name VARCHAR, reason VARCHAR, area VARCHAR)
   WITH (kafka_topic='call-center', value_format='json', partitions=1);
 
 
-CREATE TABLE support_view AS
-    SELECT name,
-           count_distinct(reason) AS distinct_reasons,
-           latest_by_offset(reason) AS last_reason
-    FROM calls
-    GROUP BY name
+CREATE TABLE location_of_interest AS
+    SELECT reason,
+           count_distinct(area) AS distinct_pings,
+           latest_by_offset(area) AS last_location
+    FROM emergencies
+    GROUP BY reason
     EMIT CHANGES;
 
 
-CREATE TABLE lifetime_view AS
+CREATE TABLE call_record AS
     SELECT name,
-           count(reason) AS total_calls,
-           (sum(duration_seconds) / 60) as minutes_engaged
-    FROM calls
+           count(reason) AS total_emergencies
+    FROM emergencies
     GROUP BY name
     EMIT CHANGES;
+
 
 
 

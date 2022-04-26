@@ -1,8 +1,8 @@
 
-SELECT * FROM lifetime_view
-WHERE name = 'michael'EMIT CHANGES;
+SELECT * FROM call_record
+WHERE name = 'Louise' EMIT CHANGES;
 
-SELECT * FROM support_view
-WHERE name = 'derek';
+SELECT * FROM location_of_interest
+WHERE reason = 'allergy';
 
 
