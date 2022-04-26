@@ -37,7 +37,7 @@ In the interactive CLI, copy and paste the content of `file/sql/data.sql` to pop
 Example;
 
 ```
-INSERT INTO calls (name, reason, duration_seconds) VALUES ('derek', 'refund', 325);
+INSERT INTO emergencies (name, reason, area) VALUES ('Liam', 'allergy', 'Florida');
 ```
 
 7. Configure ksqlDB to read from start of stream
@@ -52,8 +52,8 @@ Start another ksqlDB's interactive CLI and run the query in `files/sql/query-exa
 Example;
 
 ```
-SELECT * FROM lifetime_view
-WHERE name = 'michael'EMIT CHANGES;
+SELECT * FROM location_of_interest
+WHERE reason = 'allergy' EMIT CHANGES;
 ```
 
 8. Add more data to the stream (first CLI instance) and observe the changes in the query (second CLI instance).
