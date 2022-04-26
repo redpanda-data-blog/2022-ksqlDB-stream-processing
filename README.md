@@ -31,6 +31,7 @@ The script does the following:
 - Creates materialized views
 
 6. Populates stream with events
+
 In the interactive CLI, copy and paste the content of `file/sql/data.sql` to populate stream with data. 
 
 Example;
@@ -39,6 +40,10 @@ Example;
 INSERT INTO calls (name, reason, duration_seconds) VALUES ('derek', 'refund', 325);
 ```
 
+7. Configure ksqlDB to read from start of stream
+```
+SET 'auto.offset.reset' = 'earliest';
+```
 
 7. Make Queries
 
