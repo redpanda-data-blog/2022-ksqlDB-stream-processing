@@ -36,8 +36,12 @@ In the interactive CLI, copy and paste the content of `file/sql/data.sql` to pop
 
 Example;
 
-```
-INSERT INTO emergencies (name, reason, area) VALUES ('Liam', 'allergy', 'Florida');
+```sql
+-- in ksqldb
+INSERT INTO emergencies (name, reason, area) VALUES ('Liam', 'allergy', 'Florida'); 
+or 
+-- in redpanda
+{"name":"Beckham", "reason": "allergy", "area": "New York"}
 ```
 
 7. Configure ksqlDB to read from start of stream
