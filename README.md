@@ -5,7 +5,7 @@ You'll need to have docker and docker-compose installed before getting started.
 1. Clone this repo and navigate to the directory as shown below:
 
 ```
-git clone https://github.com/Ivy-Walobwa/redpanda-ksqldb-materialized-cache.git
+git clone https://github.com/redpanda-data-blog/2022-ksqlDB-stream-processing.git
 
 cd redpanda-ksqldb-materialized-cache
 ```
