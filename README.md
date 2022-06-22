@@ -7,7 +7,7 @@ You'll need to have docker and docker-compose installed before getting started.
 ```
 git clone https://github.com/redpanda-data-blog/2022-ksqlDB-stream-processing.git
 
-cd redpanda-ksqldb-materialized-cache
+cd 2022-ksqlDB-stream-processing
 ```
 
 
