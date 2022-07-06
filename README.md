@@ -1,4 +1,10 @@
-# Materialized Cache with Redpanda and ksqlDB
+# How to use ksqlDB and Redpanda to build a materialized cache
+
+Learn how to use ksqlDB with Redpanda to create a real-time materialized cache.
+
+Follow along with [this tutorial on the Redpanda blog](https://redpanda.com/blog/ksqldb-materialized-cache) to put this demo into action. 
+
+-------------------------------------
 
 ## Setting up  
 You'll need to have docker and docker-compose installed before getting started.
@@ -61,3 +67,15 @@ WHERE reason = 'allergy' EMIT CHANGES;
 ```
 
 8. Add more data to the stream (first CLI instance) and observe the changes in the query (second CLI instance).
+
+
+----------------------------
+
+## About Redpanda 
+
+Redpanda is Apache Kafka® API-compatible. Any client that works with Kafka will work with Redpanda, but we have tested the ones listed [here](https://docs.redpanda.com/docs/reference/faq/#what-clients-do-you-recommend-to-use-with-redpanda).
+
+* You can find our main project repo here: [Redpanda](https://github.com/redpanda-data/redpanda)
+* Join the [Redpanda Community on Slack](https://redpanda.com/slack)
+* [Sign up for Redpanda University](https://university.redpanda.com/) for free courses on data streaming and working with Redpanda
+
